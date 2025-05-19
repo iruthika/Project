@@ -1,0 +1,28 @@
+<div class="volunteer-history-container">
+
+
+  <button (click)="goBack()" class="back-btn">
+    <i class="fas fa-arrow-left"></i> Back
+  </button>
+
+  <h3 class="section-title">Donation History</h3>
+
+  <div class="filter-section">
+    <input type="text" [(ngModel)]="filters.area" placeholder="Filter by Location" class="filter-input">
+    <button (click)="applyLocationFilter()" class="filter-btn">Apply</button>
+    <button (click)="clearFilter()" class="clear-btn">Clear</button>
+  </div>
+
+  <div *ngIf="filteredHistory.length > 0" class="card-grid">
+    <div class="card" *ngFor="let record of filteredHistory">
+      <p><strong>Food Available:</strong> {{ record.foodAvailable }}</p>
+      <p><strong>Date:</strong> {{ record.date }}</p>
+      <p><strong>Pickup Time:</strong> {{ record.pickupTime }}</p>
+      <p><strong>Address:</strong> {{ record.location }}</p>
+    </div>
+  </div>
+
+  <p *ngIf="filteredHistory.length === 0" class="no-history-message">
+    No donation made!!
+  </p>
+</div>

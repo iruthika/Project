@@ -1,0 +1,19 @@
+<div class="login-page">
+<div class="login-container">
+  <h2>We make a living by what we get, but we make a life by what we give!</h2>
+<div class="input-field">
+  <form (ngSubmit)="loginUser()">
+    <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required />
+    <input type="password" [(ngModel)]="password" name="password" placeholder="Password" required />
+    <div class="login">
+      <button type="submit">Login</button><br>
+    </div>
+  </form>
+  
+</div>
+  <p>
+    Don't have an account?
+    <button (click)="goToSignup()">Signup</button>
+  </p>
+</div>
+</div>

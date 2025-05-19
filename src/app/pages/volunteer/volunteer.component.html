@@ -1,0 +1,40 @@
+<div class="volunteer-page">
+  <button class="home-button" (click)="goHome()" title="Go to Home">
+    <i class="fas fa-home"></i> Go Back🏠
+  </button>
+  <div class="volunteer-container">
+  
+    <h2>Search for Donations</h2>
+
+
+    <div class="search-bar">
+      <input type="text" [(ngModel)]="searchArea" placeholder="Enter Area name">
+
+
+
+      <button (click)="searchFood()">Search</button>
+      <!-- Clear Button -->
+      <button (click)="clearSearch()" class="clear-btn">Clear</button>
+    </div>
+
+    <div class="results" *ngIf="searchResults.length > 0; else noResults">
+      <div class="result-card" *ngFor="let result of searchResults">
+        <h3>{{ result.food }}</h3>
+        <p><strong>Food:</strong> {{ result.foodAvailable}}</p>
+        <p><strong>Servings:</strong> {{ result.no_of_servings }}</p>
+        <p><strong>Address:</strong> {{ result.location }}</p>
+        <p><strong>Date:</strong> {{ result.date }}</p>
+        <p><strong>Pickup Time:</strong> {{ result.pickupTime }}</p>
+        <p><strong>Status:</strong> {{ result.status }}</p>
+        <p><strong>Donor user id:</strong> {{ result.myid }}</p>
+
+        <button class="pickup-btn" (click)="pickupDonation(result)">Pickup</button>
+      </div>
+    </div>
+
+    <ng-template #noResults>
+      <p *ngIf="searchArea">No food available in this area!</p>
+      <p *ngIf="!searchArea">Please enter a location to search for donations.</p>
+    </ng-template>
+  </div>
+</div>

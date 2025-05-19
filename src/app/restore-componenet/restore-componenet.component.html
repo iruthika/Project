@@ -1,0 +1,39 @@
+<div class="container">
+    <h2>Deleted Users</h2>
+    <button (click)="goBack()" class="back-btn">
+        <i class="fas fa-arrow-left"></i>Back
+      </button>
+    <!-- Error Message if Any -->
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+  
+    <!-- Table displaying deleted users -->
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Email</th>
+          <th>Username</th>
+          <th>Contact No</th>
+          <th>Address</th>
+          <th>Role</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of deletedUsers">
+          <td>{{ user.id }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.contactNo }}</td>
+          <td>{{ user.address }}</td>
+          <td>{{ user.role }}</td>
+          <td>
+            <button (click)="restoreUser(user.id)" class="btn btn-success">Restore</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

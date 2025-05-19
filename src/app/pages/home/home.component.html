@@ -1,0 +1,16 @@
+
+<div class="home-container">
+<div class="logout">
+    <button (click)="logout()">Logout</button>
+</div>
+    <div class="nav-links">
+        <a routerLink="/donate/{{userId}}" class="home-link">Donate Food</a>|
+        <!-- <button (click)="navigateToDonate()" class="home-link">Donate Food</button>| -->
+        <a routerLink="/volunteer/{{userId}}" class="home-link">Search food</a>|
+        <!-- <button (click)="navigateToProfile()">Profile</button> -->
+        <a routerLink="/profile/{{userId}}" class="home-link">My profile</a>
+
+    </div>
+    
+    <p class="bold-text">Your excess can be someone's needy</p>
+</div>

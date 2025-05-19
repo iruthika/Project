@@ -1,0 +1,60 @@
+<div class="reg-page">
+  <div class="register-container">
+    <h2>Thank you for your initiation!</h2>
+    <form (ngSubmit)="registerUser()" #registerForm="ngForm">
+    
+      <!-- Username Field -->
+      <input type="text" [(ngModel)]="username" name="username" placeholder="Username" required #usernameField="ngModel" 
+        [class.invalid]="usernameField.invalid && usernameField.touched" />
+      <div *ngIf="usernameField.invalid && usernameField.touched" class="error-message">
+        Username is required.
+      </div>
+      
+      <!-- Email Field -->
+      <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required #emailField="ngModel" 
+        [class.invalid]="emailField.invalid && emailField.touched" />
+      <div *ngIf="emailField.invalid && emailField.touched" class="error-message">
+        Please provide a valid email.
+      </div>
+      
+      <!-- Contact Number Field -->
+      <input type="text" [(ngModel)]="contactNo" name="contactNo" placeholder="Contact Number" required #contactNoField="ngModel" 
+        [class.invalid]="contactNoField.invalid && contactNoField.touched" />
+      <div *ngIf="contactNoField.invalid && contactNoField.touched" class="error-message">
+        Contact Number is required.
+      </div>
+      
+      <!-- Address Field -->
+      <input type="text" [(ngModel)]="address" name="address" placeholder="Address" required #addressField="ngModel" 
+        [class.invalid]="addressField.invalid && addressField.touched" />
+      <div *ngIf="addressField.invalid && addressField.touched" class="error-message">
+        Address is required.
+      </div>
+      
+      <!-- Role Selection Field -->
+      <select [(ngModel)]="role" name="role" id="role" required #roleField="ngModel" 
+        [class.invalid]="roleField.invalid && roleField.touched">
+        <option value="" disabled selected>Select a role</option>
+        <option value="donor">Donor</option>
+        <option value="volunteer">Volunteer</option>
+      </select>
+      <div *ngIf="roleField.invalid && roleField.touched" class="error-message">
+        Please select a role.
+      </div>
+      
+      <!-- Password Field -->
+      <input type="password" [(ngModel)]="password" name="password" placeholder="Password" required #passwordField="ngModel" 
+        [class.invalid]="passwordField.invalid && passwordField.touched" />
+      <div *ngIf="passwordField.invalid && passwordField.touched" class="error-message">
+        Password is required.
+      </div>
+      
+      <!-- Submit Button (Disabled if form is invalid) -->
+      <button type="submit" [disabled]="registerForm.invalid">Register</button>
+    </form>
+    
+    <p>Already have an account?
+      <button (click)="goToLogin()">Login</button>
+    </p>
+  </div>
+</div>

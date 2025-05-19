@@ -1,0 +1,86 @@
+<div class="admin-container">
+  <h2>Admin Dashboard</h2>
+
+
+  <div class="button-group">
+    <button (click)="fetchUsers()">View Users</button>
+    <button (click)="fetchDonations()">Donation History</button>
+    <button (click)="fetchPickups()">Volunteer History</button>
+    <button (click)="fetchRestore()"> Deleted Users</button>
+  </div>
+
+  <div class="filter-section" *ngIf="currentView === 'donations' || currentView === 'pickups'">
+    <input type="text" [(ngModel)]="filters.area" placeholder="Filter by Location">
+    <button (click)="applyLocationFilter()">Search</button>
+    <button (click)="clearFilter()" class="clear-btn">Clear</button>
+  </div>
+<div class="table">
+
+
+  <div *ngIf="currentView === 'users'" class="admin-section">
+    <table *ngIf="users.length > 0">
+      <thead>
+        <tr>
+          <th>ID</th><th>Username</th><th>Email</th><th>Address</th><th>Contact</th><th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.id }}</td>
+          <td *ngIf="user.isEditing"><input [(ngModel)]="user.username"></td>
+          <td *ngIf="!user.isEditing">{{ user.username }}</td>
+
+          <td *ngIf="user.isEditing"><input [(ngModel)]="user.email"></td>
+          <td *ngIf="!user.isEditing">{{ user.email }}</td>
+
+          <td *ngIf="user.isEditing"><input [(ngModel)]="user.address"></td>
+          <td *ngIf="!user.isEditing">{{ user.address }}</td>
+
+          <td *ngIf="user.isEditing"><input [(ngModel)]="user.contactNo"></td>
+          <td *ngIf="!user.isEditing">{{ user.contactNo }}</td>
+
+          <td class="action-buttons">
+            <button *ngIf="!user.isEditing" (click)="toggleEdit(user)" class="edit-btn">Edit</button>
+            <button *ngIf="user.isEditing" (click)="updateUser(user)" class="save-btn">Save</button>
+            <button (click)="deleteUser(user)" class="delete-btn">Delete</button>
+            
+          </td>
+          
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+  <div *ngIf="currentView === 'donations'" class="admin-section">
+      <h3>All Donations</h3>
+      
+      <div *ngIf="filteredDonations.length > 0" class="donation-cards-container">
+        <div *ngFor="let donation of filteredDonations" class="donation-card">
+          <h4>Donation ID: {{ donation.myid }}</h4>
+          <p><strong>Food Available:</strong> {{ donation.foodAvailable }}</p>
+          <p><strong>Number of Servings:</strong> {{ donation.no_of_servings }}</p>
+          <p><strong>Location:</strong> {{ donation.location }}</p>
+          <p><strong>Date:</strong> {{ donation.date }}</p>
+        </div>
+      </div>
+    
+      <p *ngIf="filteredDonations.length === 0" class="no-history-message">No donations found.</p>
+  </div>
+
+  <div *ngIf="currentView === 'pickups'" class="admin-section">
+      <h3>All Pickups</h3>
+      
+      <div *ngIf="filteredPickups.length > 0" class="donation-cards-container">
+        <div *ngFor="let pickup of filteredPickups" class="donation-card">
+          <h4>Pickup ID: {{ pickup.myid }}</h4>
+          <p><strong>Food Available:</strong> {{ pickup.foodAvailable }}</p>
+          <p><strong>Location:</strong> {{ pickup.location }}</p>
+          <p><strong>Date:</strong> {{ pickup.date }}</p>
+        </div>
+      </div>
+      
+      <p *ngIf="filteredPickups.length === 0" class="no-history-message">No pickups found.</p>
+  </div>
+</div>

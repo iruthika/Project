@@ -1,0 +1,82 @@
+.login-page{
+  background-image: url("https://tse4.mm.bing.net/th/id/OIP.IJmq_N5wYpeWP2Ngz_YRZQHaFQ?rs=1&pid=ImgDetMain");
+    background-repeat:no-repeat;
+    background-position:center;
+
+    height:70vh;
+    width: 140%;
+}
+  .login-container {
+    max-width: 320px; /* Max width of the login box */
+    padding: 40px 30px; /* Padding inside the form */
+    border-radius: 16px; /* Rounded corners */
+    box-shadow: 0 4px 15px rgba(228, 15, 15, 0.7); /* Subtle shadow effect */
+    text-align: center;
+    margin-left: 100px; /* Removed left margin to center the form */
+    margin-top:100px; /* Removed top margin to center the form */
+  }
+  .input-field{
+    width:90%;
+  }
+  /* Input fields */
+  .login-container input {
+    width: 100%;
+    padding: 12px;
+    margin: 20px 0;
+    border-radius: 8px;
+    border: 1px solid #757070;
+    font-size: 14px;
+  }
+  .login-container h2{
+    font-family:cursive;
+    font-size:medium;
+  }
+  /* Submit button */
+  .login-container button[type="submit"] {
+    background-color: #2196f3;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  .login-container button[type="submit"]:hover {
+    background-color: #0b7dda;
+  }
+  
+  /* Text below form */
+  .login-container p {
+    margin-top: 15px;
+    font-size: 14px;
+  }
+  .login{
+    margin-left: 100px;
+    width: 100px;
+  }
+  .login-container a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .login-container a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Signup button (styled as text) */
+  .login-container button:not([type="submit"]) {
+    background: none;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0;
+  }
+  
+  .login-container button:not([type="submit"]):hover {
+    text-decoration: underline;
+  }
+  

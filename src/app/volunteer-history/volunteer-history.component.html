@@ -1,0 +1,30 @@
+<div class="volunteer-history-container">
+  <!-- Header Section -->
+  <div class="header-container">
+    <!-- Back Button -->
+    <button (click)="goBack()" class="back-btn"><i class="fas fa-arrow-left"></i> Back</button>
+  </div>
+
+  <h3 class="section-title">Pickup History</h3>
+
+  <!-- Filter/Search by Area -->
+  <div class="filter-container">
+    <input type="text" [(ngModel)]="areaTerm" placeholder="Search by Area" class="filter-input" />
+    <button (click)="applyAreaFilter()" class="filter-btn">Apply</button>
+    <button (click)="clearFilter()" class="clear-btn">Clear</button>
+  </div>
+
+  <!-- Donation Cards -->
+  <div *ngIf="filteredVolunteerHistory.length > 0" class="card-grid">
+    <div class="card" *ngFor="let record of filteredVolunteerHistory">
+      <h4 class="card-title">Volunteer ID: {{ record.myId }}</h4>
+      <p><strong>Food Available:</strong> {{ record.foodAvailable }}</p>
+      <p><strong>Date:</strong> {{ record.date }}</p>
+      <p><strong>Pickup Time:</strong> {{ record.pickupTime }}</p>
+      <p><strong>Location:</strong> {{ record.location }}</p>
+    </div>
+  </div>
+
+  <!-- Message when no volunteer history available -->
+  <p *ngIf="filteredVolunteerHistory.length === 0" class="no-history-message">No Pickup found!!</p>
+</div>

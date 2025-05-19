@@ -1,0 +1,58 @@
+
+<div class="profile-container">
+  <h2>User Profile</h2>
+
+  <!-- Top-right error message -->
+<div *ngIf="errorMessage" class="error-message">
+  {{ errorMessage }}
+</div>
+
+  <button (click)="goBack()" class="back-btn">
+    <i class="fas fa-arrow-left"></i>Back
+  </button>
+
+  <br>
+  <div class="profile-content">
+    <div class="user-details">
+      <p><strong>Email:</strong> {{ userProfile.email }}</p>
+      <p><strong>Username:</strong> {{ userProfile.username }}</p>
+
+      <div>
+        <label for="address"><strong>Address:</strong></label>
+        <span *ngIf="!isEditingAddress">{{ userProfile.address }}</span><br><br>
+        <input *ngIf="isEditingAddress" type="text" id="address" [(ngModel)]="updatedAddress" placeholder="Edit Address">
+        <button *ngIf="!isEditingAddress" (click)="toggleEditAddress()">Edit</button>
+      </div>
+      <br>
+      <div>
+        <label for="contactNo"><strong>Contact No:</strong></label>
+        <span *ngIf="!isEditingContactNo">{{ userProfile.contactNo }}</span><br><br>
+        <input *ngIf="isEditingContactNo" type="text" id="contactNo" [(ngModel)]="updatedContactNo" placeholder="Edit Contact No">
+        <button *ngIf="!isEditingContactNo" (click)="toggleEditContactNo()">Edit</button>
+      </div>
+
+      <button *ngIf="isEditingContactNo || isEditingAddress" (click)="saveChanges()" class="save-btn">Save Changes</button>
+    </div>
+
+    <div class="history-buttons">
+      <h3>View History</h3>
+      <button (click)="navigateToDonationHistory()" class="history-btn">Donation History</button>
+      <br>
+      <button (click)="navigateToVolunteerHistory()" class="history-btn">Pickup History</button>
+      <br><br>
+    </div>
+<!-- Donation History Message -->
+<div *ngIf="classStatus" class="notification">
+  <h2>No donation history</h2>
+</div>
+
+<!-- Volunteer Pickup History Message -->
+<div *ngIf="classStatusPickUp" class="notification">
+  <h2>No pickup history</h2>
+</div>
+
+
+  </div>
+</div>
+
+
